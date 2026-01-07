@@ -11,29 +11,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository usersRepo;
 
-    private final String ADMIN_EMAIL = "admin@example.com";
-    private final String ADMIN_PASSWORD = "{noop}admin123";
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-
-        if (ADMIN_EMAIL.equals(username)) {
-            return new org.springframework.security.core.userdetails.User(
-                    ADMIN_EMAIL,
-                    ADMIN_PASSWORD,
-                    List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))
-            );
-        }
-
-        // ✅ Otherwise load Employee from DB
         User user = usersRepo.findById(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
@@ -43,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
-                user.getPassword(),
+                user.getPassword(),   
                 authorities
         );
     }
