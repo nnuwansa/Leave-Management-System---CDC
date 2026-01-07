@@ -1,7 +1,7 @@
 package com.LeaveDataManagementSystem.LeaveManagement.Service;
 
 import com.LeaveDataManagementSystem.LeaveManagement.Repository.UserRepository;
-import com.LeaveDataManagementSystem.LeaveManagement.Model.User; // <-- your entity
+import com.LeaveDataManagementSystem.LeaveManagement.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,3 +35,4 @@ public class CustomUserDetailsService implements UserDetailsService {
         );
     }
 }
+
