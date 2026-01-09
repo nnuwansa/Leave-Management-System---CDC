@@ -71,6 +71,7 @@ public class SecurityConfig {
             baseUrl,
             frontendUrl,
             "https://leave-cdc.vercel.app/"
+            "http://194.233.84.108:8084/"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
@@ -100,5 +101,6 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
 
 
