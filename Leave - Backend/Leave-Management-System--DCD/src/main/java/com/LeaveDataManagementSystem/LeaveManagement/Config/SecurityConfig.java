@@ -49,9 +49,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // preflight
-                        // ✅ Employees can access their own data, admins can access all
+                        //  Employees can access their own data, admins can access all
                         .requestMatchers("/Employees/**").hasAnyRole("EMPLOYEE", "ADMIN", "HR")
-                        // ✅ Officers & Admins can access dashboard
+                        //  Officers & Admins can access dashboard
                         .requestMatchers("/leaves/dashboard/**").hasAnyRole("EMPLOYEE", "ADMIN")
                         .anyRequest().authenticated()
                 )
@@ -101,6 +101,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
 
 
 
