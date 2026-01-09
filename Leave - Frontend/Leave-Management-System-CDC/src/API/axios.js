@@ -17,7 +17,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://leave-management-system--dcd.fly.dev",
+  baseURL: "http://194.233.84.108:9004",
 });
 
 API.interceptors.request.use((config) => {
