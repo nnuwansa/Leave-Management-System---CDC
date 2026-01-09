@@ -8,13 +8,13 @@ if (!API_BASE_URL) {
 
 const API = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10000, // 10 seconds timeout
+  timeout: 10000, 
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-// Request interceptor
+
 API.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
