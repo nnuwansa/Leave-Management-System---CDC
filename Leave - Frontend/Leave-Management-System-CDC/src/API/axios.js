@@ -8,12 +8,11 @@ if (!API_BASE_URL) {
 
 const API = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 10000, 
+  timeout: 80000,
   headers: {
     "Content-Type": "application/json",
   },
 });
-
 
 API.interceptors.request.use(
   (config) => {
@@ -43,7 +42,10 @@ API.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response) {
+    if (error.code === "ECONNABORTED") {
+      console.error(`⏱️ Request timeout: ${error.config.url}`);
+      console.error(`Timeout was set to: ${error.config.timeout}ms`);
+    } else if (error.response) {
       console.error(
         `❌ ${error.config.method.toUpperCase()} ${error.config.url} - ${
           error.response.status
